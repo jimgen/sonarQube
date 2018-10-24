@@ -52,7 +52,7 @@ pipeline {
 						SERVICES=`aws ecs describe-services --services $SERVICE_NAME --cluster $CLUSTER_NAME --region ap-southeast-2 | jq '.services[] | length'`
 						if [ -z $SERVICES ]; then 
 							aws ecs create-service --cluster $CLUSTER_NAME --region ap-southeast-2 --service-name $SERVICE_NAME --task-definition $TASK_NAME:$TASK_REVISION --desired-count 1 --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[subnet-042b71301bb9dec57
-],securityGroups=[sg-02a89c2245df67828]}"
+],securityGroups=[sg-02a89c2245df67828],assignPublicIp=enabled}"
 						else 
 							aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --task-definition $TASK_NAME:$TASK_REVISION --desired-count 1 --region ap-southeast-2
 						fi
