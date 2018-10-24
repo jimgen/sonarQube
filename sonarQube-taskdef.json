@@ -6,8 +6,8 @@
     "executionRoleArn": "arn:aws:iam::196093915263:role/ecsTaskExecutionRole",
     "containerDefinitions": [
       {
-        "name": "sonarQube",
-        "image": "196093915263.dkr.ecr.ap-southeast-2.amazonaws.com/sonarQube:latest",
+        "name": "sonarqube",
+        "image": "196093915263.dkr.ecr.ap-southeast-2.amazonaws.com/sonarqube:latest",
         "portMappings": [
             {
                 "containerPort": 80, 

@@ -10,7 +10,7 @@ pipeline {
 		}
 		stage('Build image') {
             environment {
-                IMAGE_NAME = "sonarQube"
+                IMAGE_NAME = "sonarqube"
             }
 			steps {
 				sh "docker build -t $IMAGE_NAME ."
@@ -19,7 +19,7 @@ pipeline {
 		stage('Push image') {
 			environment {
                 ACCOUNT_ID = "196093915263"
-				IMAGE_NAME = "sonarQube"
+				IMAGE_NAME = "sonarqube"
             }
 			steps {
 				sh "echo \"Docker Image Pushed\""
@@ -34,9 +34,9 @@ pipeline {
 		stage('Run instance')
 		{
 			environment {
-				TASK_NAME = "sonarQube-taskdef"
+				TASK_NAME = "sonarqube-taskdef"
 				CLUSTER_NAME = "default"
-				SERVICE_NAME = "sonarQube-service"
+				SERVICE_NAME = "sonarqube-service"
             }
 			steps { 
 				withCredentials( [[ $class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY' ]]) {
