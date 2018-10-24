@@ -35,7 +35,7 @@ pipeline {
 		{
 			environment {
 				TASK_NAME = "sonarqube-taskdef"
-				CLUSTER_NAME = "default"
+				CLUSTER_NAME = "jim-test"
 				SERVICE_NAME = "sonarqube-service"
             }
 			steps { 
