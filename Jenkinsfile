@@ -24,8 +24,8 @@ pipeline {
 			steps {
 				sh "echo \"Docker Image Pushed\""
 				script {
-					docker.withRegistry("https://$ACCOUNT_ID.dkr.ecr.ap-southeast-2.amazonaws.com", "ecr:ap-southeast-2:aws_creds") {
-						docker.image("$IMAGE_NAME").push('latest')
+					docker.withRegistry("https://196093915263.dkr.ecr.ap-southeast-2.amazonaws.com", "ecr:ap-southeast-2:aws_creds") {
+						docker.image("sonarqube").push('latest')
 					}	
 				}
 				sh "echo \"Docker Image Pushed\""
