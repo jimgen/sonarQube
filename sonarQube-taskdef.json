@@ -1,0 +1,30 @@
+{
+    "family": "sonarQube-containers",
+    "networkMode": "awsvpc",
+    "cpu": "256",
+    "memory": "512",
+    "executionRoleArn": "arn:aws:iam::196093915263:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+      {
+        "name": "sonarQube",
+        "image": "196093915263.dkr.ecr.ap-southeast-2.amazonaws.com/sonarQube:latest",
+        "portMappings": [
+            {
+                "containerPort": 80, 
+                "hostPort": 80, 
+                "protocol": "tcp"
+            }
+        ], 
+        "essential": true,
+        "environment": [
+            {
+                "name": "ENV",
+                "value": "production"
+            }
+        ]
+      }
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ]
+  }
