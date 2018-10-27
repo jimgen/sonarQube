@@ -35,7 +35,7 @@ pipeline {
 		{
 			environment {
 				TASK_NAME = "sonarqube-taskdef"
-				CLUSTER_NAME = "jim-test"
+				CLUSTER_NAME = "default"
 				SERVICE_NAME = "sonarqube-service"
             }
 			steps { 
@@ -51,8 +51,7 @@ pipeline {
 						TASK_REVISION=`aws ecs describe-task-definition --task-definition $TASK_NAME --region ap-southeast-2 | jq .taskDefinition.revision`
 						SERVICES=`aws ecs describe-services --services $SERVICE_NAME --cluster $CLUSTER_NAME --region ap-southeast-2 | jq '.services[] | length'`
 						if [ -z $SERVICES ]; then 
-							aws ecs create-service --cluster $CLUSTER_NAME --region ap-southeast-2 --service-name $SERVICE_NAME --task-definition $TASK_NAME:$TASK_REVISION --desired-count 1 --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[subnet-0d1fcce01ec92f30e
-],securityGroups=[sg-074a210c92193561f],assignPublicIp=ENABLED}"
+							aws ecs create-service --cluster $CLUSTER_NAME --region ap-southeast-2 --service-name $SERVICE_NAME --task-definition $TASK_NAME:$TASK_REVISION --desired-count 1 --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[subnet-077427f7e02b4a78d],securityGroups=[sg-0799d2d1bbdb6aa8f],assignPublicIp=ENABLED}"
 						else 
 							aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --task-definition $TASK_NAME:$TASK_REVISION --desired-count 1 --region ap-southeast-2
 						fi
