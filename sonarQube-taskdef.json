@@ -10,8 +10,8 @@
         "image": "196093915263.dkr.ecr.ap-southeast-2.amazonaws.com/sonarqube:latest",
         "portMappings": [
             {
-                "containerPort": 80, 
-                "hostPort": 80, 
+                "containerPort": 8080, 
+                "hostPort": 8080, 
                 "protocol": "tcp"
             }
         ], 
